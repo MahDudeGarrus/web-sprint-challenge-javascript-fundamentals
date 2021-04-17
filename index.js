@@ -17,7 +17,9 @@ myFunction();
 
 //🚀🚀🚀 ⬇️ 📝 Explanation ⬇️ 📝 🚀🚀🚀: 
 
-
+// 'nestedFunction' can can access the variable internal because nestedFunction is inside the myFunction scope, which is the parent.
+// A closure is when a function tries to reach outside of it's own scope, it can access things that are outside.
+// This would also make it possible for 'external' variable to  be accessed inside of 'myFunction'.
 
 
 
@@ -28,11 +30,15 @@ myFunction();
     
 For example, `summation(4)` should return 10 because 1+2+3+4 is 10. Note, you may use a for loop for this function if you wish */
 
-function summation(/*Your Code Here*/) {
-  /*Your Code Here*/
-
-  }
+function summation(number) {      //input parameter will be a number
+  let counter = 0;                // initializing the counter
+  for (let i = 0; i <= number; i++){    // looping to gather integers less than or equal to the number
+    counter += i;                       // counter will loop through return integers from the loop and add them to the counter.
+  }   
+  return counter;  
+}
  
+summation(4);   // returns 10
 
 // 🦁🦁🦁 Topic 2: ADVANCED Array Methods 🦁🦁🦁
 // Given this zoo data from around the United States, follow the instructions below. Use the specific array methods in the requests below to solve the problems.
@@ -56,9 +62,13 @@ const zooAnimals = [
   displayNames will be an array of strings, and each string should follow this pattern: "name: {name}, scientific: {scientific name}"
   */
 
-  function animalNames(/*Your Code Here*/){
-    /*Your Code Here*/
+  function animalNames(arrayZoo){
+    let namesOfAnimals = []
+    arrayZoo.forEach(zoo => namesOfAnimals.push(`name: ${zoo.animal_name}, scientific: ${zoo.scientific_name}`));   // using an arrow function to push results from the forEach findings, findings will be pushed to an array since forEach does not return an array.
+    return namesOfAnimals;
   }
+
+  animalNames(zooAnimals);
   
 
   /* 🦁🦁🦁 Request 2: .map() 🦁🦁🦁
@@ -67,10 +77,11 @@ const zooAnimals = [
   For example: ['jackal, asiatic', .....]
   */
 
-  function lowerCaseNames(/*Your Code Here*/){
-    /*Your Code Here*/
+  function lowerCaseNames(arrayZoo){
+    let namesLowerCase = arrayZoo.map(zoo => zoo.animal_name.toLowerCase())
+    return namesLowerCase;
   }
-  
+  lowerCaseNames(zooAnimals);
   
   /* 🦁🦁🦁 Request 3: .filter() 🦁🦁🦁
   The zoo is concerned about animals with a lower population count. 
